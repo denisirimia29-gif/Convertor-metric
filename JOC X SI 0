@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+void afisareTabla(char tabla[3][3]){
+  cout<<'\n';
+  for(int i=0;i<3;++i){
+  for(int j=0;j<3;++j){
+    cout<<" "<<tabla[i][j]<<" ";
+    if(j<2)cout<<"|";
+    }
+    cout<<endl;
+    if(i<2)cout<<"---|---|---"<<endl;
+    }
+  cout<<'\n';
+}
+char verificaCastigator(char tabla[3][3]){
+  for(int i=0;i<3;++i){
+    if(tabla[i][0]==tabla[i][1]&&tabla[i][1]==tabla[i][2]&&tabla[i][0]!=' '){
+      return tabla[i][0];
+      }
+    }
+  for(int j=0;j<3;++j){
+    if(tabla[0][j]==tabla[1][j]&&tabla[1][j]==tabla[2][j]&&tabla[0][j]!=' '){
+      return tabla[0][j];
+      }
+  }
+    if(tabla[0][0]==tabla[1][1]&&tabla[1][1]==tabla[2][2]&&tabla[0][0]!=' '){
+      return tabla[0][0];
+      }
+    if(tabla [2][0]==tabla[1][1]&&tabla[1][1]==tabla[0][2]&&tabla[0][2]!=' '){
+      return tabla[0][2];
+      }
+    return ' ';
+    }
+  int main()
+  {
+    char tabla[3][3] = { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} };
+    char player = 'X';
+    int rand, coloana;
+    int miscari = 0;
+    char castigator = ' ';
+    cout << "=== TIC-TAC-TOE ===\n";
+    cout << "Jucatori: X si 0\n";
+    while(castigator==' '&&miscari<9){
+      afisareTabla(tabla);
+      cout << "Randul jucatorului " << player << ". Introdu rand(0-2) si coloana(0-2): ";
+        cin >> rand >> coloana;
+        if(rand>=0 && rand<=2 && coloana>=0 && coloana<=2 && tabla[rand][coloana]==' ') {
+            tabla[rand][coloana] = player;
+            miscari++;
+            castigator = verificaCastigator(tabla);
+            player = (player=='X') ? '0' : 'X';
+        } else {
+            cout << "Mutare invalida! Incearca din nou.\n";
+        }
+    }
+    afisareTabla(tabla);
+    if(castigator!=' ')
+        cout << "Castigator: " << castigator << "!\n";
+    else
+        cout << "Remiza!\n";
+    return 0;
+}
+
+    
