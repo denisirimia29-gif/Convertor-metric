@@ -1,0 +1,31 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    long double x;
+    int optiune = 1;
+    cout << "=== CONVERTOR METRIC ===" << endl;
+    while(true)
+    {
+      if(optiune==0)break;
+        cout<<"\nIntrodu valoarea in metri: ";
+        cin>>x;
+        cout << fixed << setprecision(4);
+        cout << "\nRezultate:" << endl;
+        cout << "Decametri:  " << x / 10.0 << endl;
+        cout << "Hectometri: " << x / 100.0 << endl;
+        cout << "Kilometri:  " << x / 1000.0 << endl;
+        cout << "Decimetri:  " << x * 10.0 << endl;
+        cout << "Centimetri: " << x * 100.0 << endl;
+        cout << "Milimetri:  " << x * 1000.0 << endl;
+
+        cout << "\nVrei sa mai convertesti? (1 = Da / 0 = Nu): ";
+        cin >> optiune;
+    }
+
+    cout << "\nProgram inchis.Va multumesc!" << endl;
+
+    return 0;
+}
